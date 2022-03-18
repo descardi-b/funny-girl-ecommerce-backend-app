@@ -15,6 +15,10 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     Product.create({
         // product model here
+        product_name: req.body.product_name,
+        price: req.body.price,
+        stock: req.body.stock,
+        category_id: req.body.category_id
     })
     .then(dbProductData => res.json(dbProductData))
     .catch(err => {
@@ -62,3 +66,5 @@ router.delete('/:id', (req, res) => {
         res.status(500).json(err);
     })
 });
+
+module.exports = router;

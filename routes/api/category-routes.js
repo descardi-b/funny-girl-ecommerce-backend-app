@@ -15,6 +15,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     Category.create({
         // Category model here
+        category_name: req.body.category_name
     })
     .then(dbCategoryData => res.json(dbCategoryData))
     .catch(err => {
@@ -62,3 +63,5 @@ router.delete('/:id', (req, res) => {
         res.status(500).json(err);
     })
 });
+
+module.exports = router;
